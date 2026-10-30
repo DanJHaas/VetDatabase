@@ -19,6 +19,9 @@ public class MainApp extends Application {
             Scene sc = new Scene(root, 800, 600);
 
 
+            stage.setMinWidth(800);
+            stage.setMinHeight(500);
+
             stage.setScene(sc);
             stage.show();
         } catch (IOException e) {
