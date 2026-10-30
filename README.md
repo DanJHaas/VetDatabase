@@ -6,4 +6,4 @@ Final project for the vet logging application
 
 # Credits
  - Daniel
- - Shawn
+ - Shaun
