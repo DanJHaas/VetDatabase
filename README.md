@@ -5,5 +5,5 @@ Final project for the vet logging application
 [JavaFx 22.0.2 Docs](https://openjfx.io/javadoc/22/)
 
 # Credits
- - Daniel
- - Shaun
+ - Daniel H.
+ - Shawn B.
