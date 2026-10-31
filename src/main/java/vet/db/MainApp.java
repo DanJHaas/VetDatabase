@@ -1,33 +1,55 @@
 package vet.db;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class MainApp extends Application {
+
+    private int appWidth = 960;
+    private int appHeight = 540;
+
+    public int getAppHeight() {
+        return appHeight;
+    }
+
+    public int getAppWidth() {
+        return appWidth;
+    }
+
     @Override
-    public void start(Stage stage) {
-        try {
-            // Wrap this method in a page loading class Ex. UIPage(String pageName)
-            // TODO: create UIPage(String pageName)
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/vet/db/pages/main.fxml")));
-            Scene sc = new Scene(root, 800, 600);
+    public void start(Stage stage) throws IOException {
 
 
-            stage.setMinWidth(800);
-            stage.setMinHeight(500);
+        /*
+        * Need a class to hold program state Ex. AppState()
+        * should ideally be a static class that is repopulated
+        * on a new login
+        *
+        * Need to see how she wants us to handle Databases
+        * before I can make a concrete proposal for state management
+        *
+        * AppState appState = new AppState()
+        *
+        * appState getters and setters
+        *
+        * maybe stores maps and arrays of data to populate
+        * the MainPage controller states
+        * */
+        //TODO: make a dataclass that holds the overall state of the program
 
-            stage.setScene(sc);
-            stage.show();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            throw new RuntimeException(e);
-        }
+        UIPage page = new UIPage("main");
+        Scene sc = new Scene(page.getPage(), getAppWidth(), getAppHeight());
+
+
+        stage.setMinWidth(getAppWidth());
+        stage.setMinHeight(getAppHeight());
+
+        stage.setScene(sc);
+        stage.show();
+
     }
 
     public static void main(String[] args) {
