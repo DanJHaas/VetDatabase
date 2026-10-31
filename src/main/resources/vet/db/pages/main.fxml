@@ -33,22 +33,26 @@
 -->
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox minHeight="500.0" minWidth="800.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vet.db.pages.MainPage">
+<VBox minHeight="500.0" minWidth="800.0" stylesheets="@app.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vet.db.pages.MainPage">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -89,19 +93,48 @@
         </Menu>
       </menus>
     </MenuBar>
-    <SplitPane dividerPositions="0.20300751879699247" minWidth="800.0" nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="ALWAYS">
+    <SplitPane dividerPositions="0.20426065162907267" minWidth="800.0" nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="ALWAYS">
       <items>
-        <AnchorPane maxWidth="160.0" minWidth="160.0" prefWidth="160.0">
+        <AnchorPane maxWidth="160.0" minWidth="0.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
           <children>
-            <VBox maxWidth="200.0" minWidth="164.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="470.0" prefWidth="164.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
+            <VBox alignment="TOP_CENTER" maxWidth="200.0" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <children>
-                <Label style="-fx-padding:10;" text="label1" />
-                <Label style="-fx-padding:10;" text="label2" />
-                <Label contentDisplay="CENTER" style="-fx-padding:10;" text="label3" />
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Not Sure">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="What to">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="35.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="do with">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="60.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="these Buttons">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </Button>
               </children>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
             </VBox>
           </children>
         </AnchorPane>
@@ -109,7 +142,7 @@
                <children>
                   <TabPane prefHeight="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <tabs>
-                      <Tab text="Untitled Tab 1">
+                      <Tab text="Button Test">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -125,35 +158,56 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <Button fx:id="btn1" contentDisplay="CENTER" maxWidth="100.0" mnemonicParsing="false" scaleX="2.0" scaleY="2.0" text="Button 1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button fx:id="btn2" contentDisplay="CENTER" layoutX="93.0" layoutY="44.0" maxWidth="100.0" mnemonicParsing="false" scaleX="2.0" scaleY="2.0" text="Button 2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <Button fx:id="btn1" contentDisplay="CENTER" maxWidth="100.0" mnemonicParsing="false" scaleX="2.0" scaleY="2.0" text="Make 20 Entries" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font></Button>
+                                          <Button fx:id="btn2" contentDisplay="CENTER" layoutX="93.0" layoutY="44.0" maxWidth="100.0" mnemonicParsing="false" scaleX="2.0" scaleY="2.0" text="Make an Entry" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                        </children>
                                     </GridPane>
                                  </children>
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab text="Untitled Tab 2">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                        </content>
+                      <Tab text="Scollable Dropdown test">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ScrollPane fitToHeight="false" fitToWidth="true" pannable="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+                                       <content>
+                                          <VBox fx:id="apt2" prefHeight="-1" prefWidth="100.0">
+                                             <children>
+                                                <TitledPane expanded="false" text="untitled">
+                                                   <content>
+                                                      <AnchorPane maxHeight="200.0" minHeight="0.0" minWidth="0.0">
+                                                         <children>
+                                                            <Button mnemonicParsing="false" text="Button" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </TitledPane>
+                                             </children>
+                                             <padding>
+                                                <Insets top="-15.0" />
+                                             </padding>
+                                          </VBox>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
                       </Tab>
-                        <Tab text="Untitled Tab 3">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                          </content>
+                        <Tab text="Unused">
+                           <content>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                           </content>
                         </Tab>
-                        <Tab text="Untitled Tab 4">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                          </content>
+                        <Tab text="Unused">
+                           <graphic>
+                              <Accordion />
+                           </graphic>
                         </Tab>
-                        <Tab text="Untitled Tab">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                          </content>
-                        </Tab>
-                        <Tab text="Untitled Tab">
+                        <Tab text="Unused">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                           </content>

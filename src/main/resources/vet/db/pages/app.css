@@ -1,0 +1,23 @@
+.split-pane:horizontal > .split-pane-divider {
+    -fx-padding: 0 5 0 5;   /* total width ≈ 8px */
+    /* -fx-background-color: #72DB76; */
+}
+/*
+.split-pane:horizontal > .split-pane-divider > .horizontal-grabber {
+    -fx-background-color: #000;
+    -fx-scale-x: 3;
+    -fx-scale-y: 3;
+}
+
+.split-pane:horizontal {
+    -fx-background-color: #A3DB72;
+}
+*/
+
+/* We will have to eventually choose a color pallet
+    colors are hard
+*/
+
+.titled-pane {
+    -fx-padding: 15 0 0 0; /* Tab2 spacing between dropdowns */
+}
