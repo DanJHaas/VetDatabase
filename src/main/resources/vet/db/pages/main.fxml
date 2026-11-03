@@ -61,8 +61,8 @@
          <children>
             <VBox minHeight="540.0" minWidth="960.0" stylesheets="@app.css">
                <children>
-                  <MenuBar VBox.vgrow="NEVER">
-                     <menus>
+                  <MenuBar VBox.vgrow="NEVER" id="topBar">
+                     <menus><!-- Top bar menus -->
                         <Menu mnemonicParsing="false" text="File">
                            <items>
                               <MenuItem mnemonicParsing="false" text="New" />
@@ -102,7 +102,7 @@
                   </MenuBar>
                   <SplitPane dividerPositions="0.20426065162907267" minWidth="800.0" nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="ALWAYS">
                      <items>
-                        <AnchorPane maxWidth="160.0" minWidth="0.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
+                        <AnchorPane maxWidth="160.0" minWidth="0.0" prefWidth="160.0" SplitPane.resizableWithParent="false" id="leftPane">
                            <children>
                               <VBox alignment="TOP_CENTER" maxWidth="200.0" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -145,9 +145,9 @@
                               </VBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane minHeight="300.0" minWidth="200.0" prefHeight="300.0" prefWidth="200.0">
+                        <AnchorPane minHeight="300.0" minWidth="200.0" prefHeight="300.0" prefWidth="200.0" id="middlePane">
                            <children>
-                              <TabPane prefHeight="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <TabPane prefHeight="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" id="tabPane">
                                  <tabs>
                                     <Tab text="Button Test">
                                        <content>
