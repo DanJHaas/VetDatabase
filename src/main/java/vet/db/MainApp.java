@@ -8,19 +8,19 @@ import java.io.IOException;
 
 public class MainApp extends Application {
 
-    private int appWidth = 960;
-    private int appHeight = 540;
+    private final static int appWidth = 960;
+    private final static int appHeight = 540;
 
-    public int getAppHeight() {
+    public static int getAppHeight() {
         return appHeight;
     }
 
-    public int getAppWidth() {
+    public static int getAppWidth() {
         return appWidth;
     }
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
 
 
         /*
@@ -41,11 +41,11 @@ public class MainApp extends Application {
         //TODO: make a dataclass that holds the overall state of the program
 
         UIPage page = new UIPage("main");
-        Scene sc = new Scene(page.getPage(), getAppWidth(), getAppHeight());
+        Scene sc = new Scene(page.getPage(), appWidth, appHeight);
 
 
-        stage.setMinWidth(getAppWidth());
-        stage.setMinHeight(getAppHeight());
+        stage.setMinWidth(appWidth);
+        stage.setMinHeight(appHeight);
 
         stage.setScene(sc);
         stage.show();
