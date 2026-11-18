@@ -12,33 +12,33 @@ DROP TABLE IF EXISTS invoices;
 
 CREATE TABLE clinics(
     clinic_id       INTEGER PRIMARY KEY,
-    name            TEXT NOT NULL,
-    address         TEXT NOT NULL,
+    name            VARCHAR(50) NOT NULL,
+    address         VARCHAR(50) NOT NULL,
     phone_number    VARCHAR(12) NOT NULL
 );
 
 CREATE TABLE users(
     user_id         INTEGER PRIMARY KEY,
     FOREIGN KEY clinic_id REFERENCES clinics(clinic_id),
-    first_name      TEXT NOT NULL,
-    last_name       TEXT NOT NULL,
-    phone_number    VARCHAR(12),
-    email           TEXT NOT NULL,
+    first_name      VARCHAR(50) NOT NULL,
+    last_name       VARCHAR(50) NOT NULL,
+    phone_number    VARCHAR(12) NOT NULL,
+    email           VARCHAR(50),
     current_bill    DOUBLE DEFAULT 0.0
 );
 
 CREATE TABLE patients(
     patient_id         INTEGER PRIMARY KEY,
     FOREIGN KEY user_id REFERENCES users(user_id),
-    first_name      TEXT NOT NULL,
-    last_name       TEXT NOT NULL
+    first_name      VARCHAR(50) NOT NULL,
+    last_name       VARCHAR(50) NOT NULL
 );
 
 
 CREATE TABLE employees(
     employee_id     INTEGER PRIMARY KEY,
-    first_name      TEXT NOT NULL,
-    last_name       TEXT NOT NULL,
+    first_name      VARCHAR(50) NOT NULL,
+    last_name       VARCHAR(50) NOT NULL,
     phone_number    VARCHAR(12) NOT NULL
 );
 
@@ -46,21 +46,21 @@ CREATE TABLE staff(
     staff_id    INTEGER PRIMARY KEY,
     FOREIGN KEY employee_id REFERENCES employees(employee_id),
     FOREIGN KEY clinic_id REFERENCES clinics(clinic_id),
-    schedule    TEXT
+    schedule    VARCHAR(200)
 );
 
 CREATE TABLE appointments(
     appointment_id    INTEGER PRIMARY KEY,
     FOREIGN KEY employee_id REFERENCES employees(employee_id),
     FOREIGN KEY patient_id REFERENCES patients(patient_id),
-    summary     TEXT,
+    summary     VARCHAR(200),
     datetime     INTEGER,
 );
 
 CREATE TABLE items(
     item_id    INTEGER PRIMARY KEY,
     FOREIGN KEY clinic_id REFERENCES clinics(clinic_id),
-    name     TEXT NOT NULL,
+    name     VARCHAR(50) NOT NULL,
     cost     DOUBLE DEFAULT 0.0,
     count    INTEGER DEFAULT 0
 );

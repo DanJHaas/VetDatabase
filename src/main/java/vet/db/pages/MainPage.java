@@ -12,6 +12,8 @@ import javafx.scene.layout.VBox;
 
 import java.sql.DriverManager;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -73,6 +75,30 @@ public class MainPage implements Initializable {
                 System.out.println("The driver name is " + meta.getDriverName());
                 System.out.println("A new database has been created.");
             }
+
+            String[] queries = new String[] {
+                    "create table example(id integer primary key, name varchar(50) not null);",
+                    "insert into example values(40, 'my_name_is_me');",
+                    "select * from example;"};
+
+            for(String q : queries) {
+                System.out.println("Query: " + q);
+
+                try (PreparedStatement statement = conn.prepareStatement(q)) {
+                    if(q.startsWith("create") || q.startsWith("insert")) {
+                        statement.executeUpdate();
+                    } else {
+                        ResultSet results = statement.executeQuery();
+                        while(results.next()) {
+                            System.out.println(results.getString("name"));
+                        }
+                    }
+
+                } catch (SQLException e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
