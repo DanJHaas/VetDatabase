@@ -66,7 +66,14 @@ public class MainPage implements Initializable {
         rootWindow.heightProperty().addListener((_, _, _) -> updateScale());
 
 
+        /*
+            #TODO: Abstract database away into a more readable form
+            class VetDatabase
+                String dbUrl = "jdbc:sqlite:my.db"; // we can change the db name
+                updateQuery(String query); // this will be for creating tables if needed
+                executeQuery(String query) -> ResultSet; // this is for select queries (see example below)
 
+         */
         String dbUrl = "jdbc:sqlite:my.db";
 
         try (var conn = DriverManager.getConnection(dbUrl)) {
