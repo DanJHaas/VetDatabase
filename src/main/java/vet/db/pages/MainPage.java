@@ -9,12 +9,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import vet.db.Database;
 
 import java.sql.DriverManager;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainPage implements Initializable {
@@ -100,7 +102,6 @@ public class MainPage implements Initializable {
                             System.out.println(results.getString("name"));
                         }
                     }
-
                 } catch (SQLException e) {
                     System.err.println(e.getMessage());
                 }
