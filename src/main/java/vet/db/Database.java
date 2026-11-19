@@ -31,7 +31,24 @@ public interface Database {
             return results;
         } catch (SQLException e) {
             throw new RuntimeException(e);
+
         }
     }
+
+
+    /*
+       Updates table should include deleting and creating a table.
+       EXAMPLE: Database.update("UPDATE example SET name = 'bill' WHERE id = 1")
+     */
+    static void update(String query){
+         try(Connection conn = DriverManager.getConnection(dbUrl);
+             Statement stmt = conn.createStatement()) {
+             stmt.executeUpdate(query);
+         } catch (SQLException e) {
+             throw new RuntimeException(e);
+         }
+    }
+
+
 
         }

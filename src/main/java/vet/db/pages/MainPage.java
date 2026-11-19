@@ -102,6 +102,7 @@ public class MainPage implements Initializable {
                         while(results.next()) {
                             System.out.println(results.getString("name"));
                         }
+
                         record Example(int id, String name){}
                         List<Example> listOfThings = Database.query("SELECT id,name FROM example",
                                 rs ->new Example(rs.getInt("id"), rs.getString("name")));
@@ -117,6 +118,10 @@ public class MainPage implements Initializable {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
+        Database.update("DROP TABLE example");
+        record Example(int id, String name){}
+        List<Example> listOfThings = Database.query("SELECT id,name FROM example",
+                rs ->new Example(rs.getInt("id"), rs.getString("name")));
 
 
 
