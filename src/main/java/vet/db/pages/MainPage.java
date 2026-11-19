@@ -17,6 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class MainPage implements Initializable {
@@ -101,6 +102,12 @@ public class MainPage implements Initializable {
                         while(results.next()) {
                             System.out.println(results.getString("name"));
                         }
+                        record Example(int id, String name){}
+                        List<Example> listOfThings = Database.query("SELECT id,name FROM example",
+                                rs ->new Example(rs.getInt("id"), rs.getString("name")));
+
+                        System.out.println(listOfThings.get(0).name);
+                        System.out.println(listOfThings.get(0).id);
                     }
                 } catch (SQLException e) {
                     System.err.println(e.getMessage());
