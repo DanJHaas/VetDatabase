@@ -2,7 +2,6 @@ package vet.db.pages;
 
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -10,17 +9,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import vet.db.Database;
 
 import java.io.*;
-import java.sql.DriverManager;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainPage implements Initializable {
@@ -70,26 +61,6 @@ public class MainPage implements Initializable {
 
         rootWindow.widthProperty().addListener((_, _, _) -> updateScale());
         rootWindow.heightProperty().addListener((_, _, _) -> updateScale());
-
-
-        Database.update("create table if not exists example(id integer primary key, name varchar(50) not null);");
-        Database.update("insert into example values(40, 'my_name_is_me');");
-        Database.tryParseSchema("schema.sql");
-
-        record Example(int id, String name) {}
-        List<Example> listOfThings = Database.query("SELECT id,name FROM example",
-                rs -> new Example(rs.getInt("id"), rs.getString("name"))
-        );
-
-        for (Example ex : listOfThings) {
-            System.out.println(ex.id);
-            System.out.println(ex.name);
-        }
-
-
-        Database.update("DROP TABLE example");
-
-
 
 
         btn1.setOnAction(_ -> {

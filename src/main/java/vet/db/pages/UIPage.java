@@ -1,4 +1,4 @@
-package vet.db;
+package vet.db.pages;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class UIPage {
 
-    private String pageName;
+    private final String pageName;
 
 
     public UIPage(String pageName) {

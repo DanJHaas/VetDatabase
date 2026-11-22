@@ -1,4 +1,4 @@
-package vet.db;
+package vet.db.database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

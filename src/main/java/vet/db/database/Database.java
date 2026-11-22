@@ -1,4 +1,5 @@
-package vet.db;
+package vet.db.database;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -22,13 +23,14 @@ public interface Database {
                  will create a list of all pets inside the Database
      */
 
+
      static <T> List<T> query(String query, RowMapper<T> mapper) {
 
         try(Connection conn = DriverManager.getConnection(dbUrl);
             Statement stmt = conn.createStatement()){
 
             ResultSet rset = stmt.executeQuery(query);
-            List<T> results = new ArrayList<T>();
+            List<T> results = new ArrayList<>();
 
             while(rset.next()){
                 results.add(mapper.map(rset));
