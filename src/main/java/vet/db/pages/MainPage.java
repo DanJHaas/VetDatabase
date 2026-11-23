@@ -9,9 +9,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import vet.db.database.Database;
 
-import java.io.*;
+
+import java.sql.DriverManager;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class MainPage implements Initializable {
@@ -61,6 +68,62 @@ public class MainPage implements Initializable {
 
         rootWindow.widthProperty().addListener((_, _, _) -> updateScale());
         rootWindow.heightProperty().addListener((_, _, _) -> updateScale());
+
+
+        /*
+            #TODO: Abstract database away into a more readable form
+            class VetDatabase
+                String dbUrl = "jdbc:sqlite:my.db"; // we can change the db name
+                updateQuery(String query); // this will be for creating tables if needed
+                executeQuery(String query) -> ResultSet; // this is for select queries (see example below)
+
+         */
+        String dbUrl = "jdbc:sqlite:my.db";
+
+        try (var conn = DriverManager.getConnection(dbUrl)) {
+            if (conn != null) {
+                var meta = conn.getMetaData();
+                System.out.println("The driver name is " + meta.getDriverName());
+                System.out.println("A new database has been created.");
+            }
+
+            String[] queries = new String[] {
+                    "create table example(id integer primary key, name varchar(50) not null);",
+                    "insert into example values(40, 'my_name_is_me');",
+                    "select * from example;"};
+
+            for(String q : queries) {
+                System.out.println("Query: " + q);
+
+                try (PreparedStatement statement = conn.prepareStatement(q)) {
+                    if(q.startsWith("create") || q.startsWith("insert")) {
+                        statement.executeUpdate();
+                    } else {
+                        ResultSet results = statement.executeQuery();
+                        while(results.next()) {
+                            System.out.println(results.getString("name"));
+                        }
+
+                        record Example(int id, String name){}
+                        List<Example> listOfThings = Database.query("SELECT id,name FROM example",
+                                rs ->new Example(rs.getInt("id"), rs.getString("name")));
+
+                        System.out.println(listOfThings.get(0).name);
+                        System.out.println(listOfThings.get(0).id);
+                    }
+                } catch (SQLException e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        Database.update("DROP TABLE example");
+        record Example(int id, String name){}
+        List<Example> listOfThings = Database.query("SELECT id,name FROM example",
+                rs ->new Example(rs.getInt("id"), rs.getString("name")));
+
 
 
         btn1.setOnAction(_ -> {

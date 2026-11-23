@@ -11,8 +11,8 @@
 
 <AnchorPane maxWidth="-Infinity" minHeight="550.0" minWidth="960.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vet.db.loginController">
    <children>
-      <TextField id="username" layoutX="480.0" layoutY="121.0" />
-      <TextField id="password" layoutX="480.0" layoutY="153.0" />
+      <TextField fx:id="username" layoutX="480.0" layoutY="121.0" />
+      <TextField fx:id="password" layoutX="480.0" layoutY="153.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="76.0" layoutX="-6.0" stroke="BLACK" strokeType="INSIDE" width="960.0" />
       <Label layoutX="388.0" layoutY="125.0" text="Username:" />
       <Label layoutX="390.0" layoutY="157.0" text="Password:" />
