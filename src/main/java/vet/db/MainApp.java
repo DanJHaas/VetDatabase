@@ -1,51 +1,28 @@
 package vet.db;
 
-import at.favre.lib.crypto.bcrypt.BCrypt;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import vet.db.database.Clinic;
-import vet.db.database.Database;
 import vet.db.pages.UIPage;
 
-import java.nio.charset.StandardCharsets;
-import java.util.List;
+import java.io.IOException;
 
 public class MainApp extends Application {
 
-    public final static int appWidth = 960;
-    public final static int appHeight = 540;
+    private final static int appWidth = 960;
+    private final static int appHeight = 540;
 
+    public static int getAppHeight() {
+        return appHeight;
+    }
+
+    public static int getAppWidth() {
+        return appWidth;
+    }
 
     @Override
     public void start(Stage stage) {
 
-
-        // example data base query and update
-        Database.tryParseSchema("schema.sql");
-        Clinic.add("pet central", "312 makeitup ave", "111-555-5555");
-        Clinic.add("care palace", "342 parade st", "222-555-5555");
-
-        // when doing table joins then you can create a custom record for passing the data around
-        List<Clinic> listOfThings = Database.query("SELECT * FROM clinics", Clinic::fromRow);
-
-        for (Clinic clinic : listOfThings) {
-            System.out.println(clinic.clinicId());
-            System.out.println(clinic.name());
-            System.out.println(clinic.address());
-            System.out.println(clinic.phoneNumber());
-        }
-
-
-        String password = "Password1";
-        String password_wrong = "Password1";
-
-        byte[] hash = BCrypt.with(BCrypt.Version.VERSION_2Y).hash(12, password.getBytes(StandardCharsets.UTF_8));
-        String storedHash = new String(hash, StandardCharsets.UTF_8);
-        System.out.println(storedHash);
-
-        BCrypt.Result result = BCrypt.verifyer(BCrypt.Version.VERSION_2Y).verify(password_wrong.getBytes(StandardCharsets.UTF_8), storedHash.getBytes(StandardCharsets.UTF_8));
-        System.out.println(result.verified);
 
         /*
         * Need a class to hold program state Ex. AppState()
@@ -64,7 +41,7 @@ public class MainApp extends Application {
         * */
         //TODO: make a dataclass that holds the overall state of the program
 
-        UIPage page = new UIPage("main");
+        UIPage page = new UIPage("login");
         Scene sc = new Scene(page.getPage(), appWidth, appHeight);
 
 
